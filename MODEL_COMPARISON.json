@@ -1,0 +1,74 @@
+{
+  "spec_version": "1.0",
+  "builder_label": "unknown",
+  "git_commit": "fee3ed9a8ee673db1b79ec792c58632763ac93c2",
+  "source_modes_implemented": [
+    "SYNTHETIC_DEMO",
+    "REAL_UNVALIDATED (file import + NSE MCP adapter)",
+    "REAL_RESEARCH_VALIDATED (computed promotion, file import only)"
+  ],
+  "real_adapter_tested": false,
+  "real_research_validated": false,
+  "public_display_permitted": false,
+  "execution_feasibility_verified": false,
+  "canonical_fixture_sha256": "f08153e9723565e02ff004027a7f55eb12bbf49f8d67b2ccd2e9665e37e92cd7",
+  "dependency_versions": {
+    "python": "3.12.3",
+    "numpy": "2.5.3",
+    "pandas": "3.0.6",
+    "scipy": "1.18.1",
+    "statsmodels": "0.15.0",
+    "duckdb": "1.5.6",
+    "pyarrow": "25.0.1",
+    "fastapi": "0.142.2",
+    "pydantic": "2.13.5",
+    "matplotlib": "3.11.2",
+    "mcp": "2.2.0",
+    "node": "22.22.0",
+    "react": "19.3.0",
+    "vite": "8.3.2",
+    "typescript": "7.0.2",
+    "plotly.js-dist-min": "4.1.1",
+    "@playwright/test": "1.63.0",
+    "chromium": "141.0.7390.37",
+    "uv": "0.8.17"
+  },
+  "test_commands": [
+    "make test",
+    "uv run --python 3.12 python -m pytest tests",
+    "cd frontend && npx playwright test",
+    "make doctor",
+    "make check-start",
+    "make refresh",
+    "python scripts/reproduce_run.py <bundle>/manifest.json"
+  ],
+  "tests_passed": 84,
+  "tests_failed": 0,
+  "tests_skipped": 0,
+  "ui_desktop_verified": true,
+  "ui_mobile_verified": true,
+  "ledger_oracle_passed": true,
+  "no_lookahead_test_passed": true,
+  "one_command_start_verified": true,
+  "known_limitations": [
+    "Only synthetic data validated end to end; weekday calendar, no corporate actions",
+    "real_adapter_tested=false: NSE MCP adapter covered by mocked contract tests only; live endpoints unreachable (egress 403)",
+    "Real-data expected calendar is the union of observed sessions until a verified NSE holiday calendar is added",
+    "Strict mode excludes evaluation blocks with known gaps (a data screen that can only remove trades)",
+    "No structural-break test; beta stability warnings are heuristics",
+    "Independent pair sleeves only; no portfolio aggregation",
+    "Borrow availability, margin and execution feasibility not verified",
+    "Docker Compose route and Windows/macOS launchers not executed in this environment",
+    "Primary-source documents (NSE terms, SEBI circular, statsmodels online docs) could not be fetched; installed library source used instead"
+  ],
+  "remaining_blockers": [
+    "Environment egress policy denies mcp.nseindia.in, www.nseindia.com and www.sebi.gov.in (HTTP 403 at proxy CONNECT)",
+    "NSE tool schemas unknown until discovery succeeds; config/nse_mapping.yaml intentionally empty",
+    "Symbol identity, corporate-action data and NSE holiday calendar not yet sourced",
+    "Public display permission not established"
+  ],
+  "notes": {
+    "tests_passed_breakdown": "80 pytest + 4 Playwright (2 tests x desktop/mobile)",
+    "builder_label": "the environment does not expose a verified model label in-repo; left as unknown per spec"
+  }
+}
