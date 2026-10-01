@@ -120,6 +120,10 @@ def run_pair_backtest(ds: Dataset, a: str, b: str, p: ResearchParams, strict: bo
                                specs, p, c, a, b)
 
     base = sim(costs)
+    peak = p.starting_equity
+    for row in base["daily"]:
+        peak = max(peak, row["equity"])
+        row["drawdown"] = row["equity"] / peak - 1 if peak > 0 else None
     hs = holdout_start_index(len(ds.calendar), p)
     holdout_date = ds.calendar[hs].strftime("%Y-%m-%d") if hs is not None else None
     mean_eq = float(np.mean([d["equity"] for d in base["daily"]])) if base["daily"] else None

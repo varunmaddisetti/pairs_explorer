@@ -162,7 +162,10 @@ def reveal(ds: Dataset, a: str, b: str, as_of: pd.Timestamp, p: ResearchParams, 
     z0 = row["z_last"]
     dates = [d.strftime("%Y-%m-%d") for d in fut.index]
     cross = None
-    for d, v in zip(dates, z):
+    crossing_note = None
+    if abs(z0) <= p.exit_z:
+        crossing_note = f"as-of z already inside the +/-{p.exit_z:g} exit band; no crossing to measure"
+    for d, v in zip(dates if crossing_note is None else [], z):
         if np.isfinite(v) and ((z0 > 0 and v <= p.exit_z) or (z0 < 0 and v >= -p.exit_z)):
             cross = d
             break
@@ -175,6 +178,7 @@ def reveal(ds: Dataset, a: str, b: str, as_of: pd.Timestamp, p: ResearchParams, 
             "norm_a": _list(fut["close_a"] / full.loc[as_of, "close_a"] * 100, 4),
             "norm_b": _list(fut["close_b"] / full.loc[as_of, "close_b"] * 100, 4),
             "z_at_as_of": _r(z0, 4), "z_at_end": _r(z[-1], 4), "first_exit_band_crossing": cross,
+            "crossing_note": crossing_note,
             "max_adverse_z": _r(adverse, 4), "hit_adverse_threshold": hit_adverse,
             "gaps": [d.strftime("%Y-%m-%d") for d in fut.index[~fut["complete"]]]}
     return out

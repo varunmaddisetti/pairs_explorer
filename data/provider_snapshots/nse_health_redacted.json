@@ -1,0 +1,34 @@
+{
+  "provider": "nse_mcp",
+  "checked_at": "2026-10-01T18:13:00+00:00",
+  "endpoints": {
+    "bhavcopy_cm": {
+      "status": "unavailable",
+      "error_class": "ProviderPermissionError",
+      "detail": "ProxyError: 403 Forbidden"
+    },
+    "cmmkt": {
+      "status": "unavailable",
+      "error_class": "ProviderPermissionError",
+      "detail": "ProxyError: 403 Forbidden"
+    }
+  },
+  "status": "degraded",
+  "attempts": [
+    {
+      "op": "list_tools:bhavcopy_cm",
+      "attempt": 1,
+      "at": "2026-10-01T18:13:00+00:00",
+      "outcome": "ProviderPermissionError",
+      "detail": "ProxyError: 403 Forbidden"
+    },
+    {
+      "op": "list_tools:cmmkt",
+      "attempt": 1,
+      "at": "2026-10-01T18:13:02+00:00",
+      "outcome": "ProviderPermissionError",
+      "detail": "ProxyError: 403 Forbidden"
+    }
+  ],
+  "public_display_permitted": false
+}

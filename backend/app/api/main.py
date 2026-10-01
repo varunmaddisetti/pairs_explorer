@@ -168,6 +168,14 @@ def curated() -> dict:
     return _curated()
 
 
+@app.get("/api/calendar")
+def calendar() -> dict:
+    """Session dates usable as as-of dates (at least one full formation window of history)."""
+    st = state()
+    cal = st.ds.calendar[st.params.formation_window - 1:]
+    return {"dates": [d.strftime("%Y-%m-%d") for d in cal], "calendar": st.ds.report.calendar}
+
+
 @app.get("/api/scanner")
 def get_scanner(as_of: str | None = Query(None, max_length=10)) -> dict:
     st = state()
