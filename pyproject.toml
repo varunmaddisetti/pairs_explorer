@@ -1,0 +1,33 @@
+[project]
+name = "pairs-divergence-explorer"
+version = "1.0.0"
+description = "Pairs Divergence Explorer - local research application for Indian-equity pair relationships (synthetic demo + real-data adapters)"
+requires-python = ">=3.12,<3.13"
+readme = "README.md"
+dependencies = [
+  "fastapi",
+  "uvicorn[standard]",
+  "pydantic",
+  "numpy",
+  "pandas",
+  "scipy",
+  "statsmodels",
+  "duckdb",
+  "pyarrow",
+  "matplotlib",
+  "mcp",
+  "httpx",
+  "pyyaml",
+]
+
+[dependency-groups]
+dev = ["pytest", "pytest-asyncio"]
+
+[tool.uv]
+package = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["backend"]
+addopts = "-q"
+filterwarnings = ["ignore::DeprecationWarning"]

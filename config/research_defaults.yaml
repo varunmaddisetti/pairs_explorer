@@ -1,0 +1,32 @@
+# Default research parameters (build kit section C).
+# Explicitly chosen for this prototype; NOT claimed to be optimal.
+config_version: "research_defaults_v1"
+formation_window: 252          # valid consecutive trading sessions
+evaluation_block: 63           # held-out sessions per fold
+calibration_window: 60         # last formation residuals used for mu / sigma
+final_holdout: 252             # last eligible observations reserved as final holdout
+entry_z: 2.0                   # |z| >= entry_z ...
+entry_z_max: 3.5               # ... and |z| < entry_z_max
+exit_z: 0.5                    # direction-specific crossing towards the mean
+adverse_z: 3.5                 # +3.5 short spread / -3.5 long spread
+max_holding: 20                # trading sessions
+cooldown_sessions: 1           # complete sessions between exit and re-entry
+fdr_method: "fdr_by"           # Benjamini-Yekutieli
+fdr_alpha: 0.05
+beta_min: 0.1
+beta_max: 5.0
+half_life_min: 2.0
+half_life_max: 60.0
+starting_equity: 100000.0      # INR per independent pair sleeve
+gross_exposure: 0.90           # of pre-entry equity
+commission_bps: 5.0            # per traded notional per fill
+slippage_bps: 10.0             # adverse execution price adjustment per fill
+levy_bps: 5.0                  # other levies per traded notional per fill
+borrow_annual: 0.05            # ACT/365 on previous short market value
+cash_interest_annual: 0.0      # explicit: no financing benefit
+risk_free_annual: 0.0          # for Sharpe excess returns
+friction_mode: "price_slippage"  # or "simple_debit" (labelled equivalent debit)
+rolling_corr_window: 63
+stress_bps: [5, 20, 50]        # total friction per leg per fill (sensitivity scenarios)
+demo_seed: 20261001
+public_history_buffer_days: 45 # conservative product buffer, NOT legal permission

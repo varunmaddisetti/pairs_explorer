@@ -1,0 +1,30 @@
+{
+  "calendar": "weekdays_only_not_nse_calendar",
+  "constructed_cases": {
+    "S_AUTO_A/S_AUTO_B": "independent random walks",
+    "S_BANK_A/S_BANK_B": "shared random walk plus stationary spread",
+    "S_BREAK_A/S_BREAK_B": "spread changes regime at observation 800",
+    "S_IT_A/S_IT_B": "shared random walk plus slower stationary spread"
+  },
+  "csv_sha256": "f08153e9723565e02ff004027a7f55eb12bbf49f8d67b2ccd2e9665e37e92cd7",
+  "dataset_id": "pairs_demo_v1_seed_20261001",
+  "end_date": "2025-12-31",
+  "mode": "SYNTHETIC_DEMO",
+  "numpy_version": "2.5.3",
+  "pandas_version": "3.0.6",
+  "rng": "PCG64",
+  "rows": 10080,
+  "seed": 20261001,
+  "sessions": 1260,
+  "start_date": "2021-03-04",
+  "symbols": [
+    "S_BANK_A",
+    "S_BANK_B",
+    "S_IT_A",
+    "S_IT_B",
+    "S_AUTO_A",
+    "S_AUTO_B",
+    "S_BREAK_A",
+    "S_BREAK_B"
+  ]
+}

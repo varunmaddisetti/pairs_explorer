@@ -1,0 +1,13 @@
+# Display routes and observation-age gating.
+# Technical data access NEVER sets public_display_permitted. It may only be changed after a
+# separately documented permission review (see DATA_RIGHTS.md).
+public_display_permitted: false
+routes:
+  local_research:
+    description: "Local/private research on this machine"
+    require_age_lag: false
+  public_educational:
+    description: "Hypothetical public educational-history route (disabled until permitted)"
+    require_age_lag: true
+    lag_calendar_days: 45   # conservative product buffer; SEBI circular (8 May 2026) states 30 days - verify before launch
+active_route: local_research

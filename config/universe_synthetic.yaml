@@ -1,0 +1,11 @@
+# Synthetic demo universe: groups used to build same-industry candidate families.
+universe_version: "synthetic_universe_v1"
+mode: SYNTHETIC_DEMO
+groups:
+  SYN_BANKS: [S_BANK_A, S_BANK_B]
+  SYN_IT: [S_IT_A, S_IT_B]
+  SYN_AUTO: [S_AUTO_A, S_AUTO_B]
+  SYN_REGIME: [S_BREAK_A, S_BREAK_B]
+curated:
+  teaching_pair: [S_BANK_A, S_BANK_B]
+  contrast_pair: [S_BREAK_A, S_BREAK_B]

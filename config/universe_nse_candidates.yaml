@@ -1,0 +1,15 @@
+# Candidate real-stock universe for the NSE adapter.
+# STATUS: UNVERIFIED. Symbol identity (current and historical), series and corporate-action
+# history have NOT been verified against a primary source from this build environment
+# (NSE hosts were blocked by the egress policy). These are current-name candidates only:
+# using them implies survivorship bias, and the groups are NOT historical index membership.
+universe_version: "nse_candidates_v1_unverified"
+mode: REAL_UNVALIDATED
+exchange: NSE
+series: EQ
+identity_verified: false
+groups:
+  BANKS: [HDFCBANK, ICICIBANK, KOTAKBANK, AXISBANK, SBIN]
+  IT_SERVICES: [TCS, INFY, WIPRO, HCLTECH, TECHM]
+  AUTO: [MARUTI, M&M, BAJAJ-AUTO, EICHERMOT, HEROMOTOCO]
+  FMCG: [HINDUNILVR, ITC, NESTLEIND, BRITANNIA, DABUR]

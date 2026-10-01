@@ -1,0 +1,15 @@
+# Mapping from discovered NSE MCP tools to the common history schema.
+# Deliberately EMPTY: argument names must be taken from an actual tool-discovery snapshot
+# (data/provider_snapshots/nse_*_tools.json), never from a blog post. The adapter refuses to
+# request history until `history_tool` and `arguments` are filled AND every argument name
+# exists in the discovered input schema.
+endpoints:
+  bhavcopy_cm: "https://mcp.nseindia.in/bhavcopy/cm/mcp"
+  cmmkt: "https://mcp.nseindia.in/cmmkt/mcp"
+history_endpoint: null      # e.g. bhavcopy_cm, after inspection
+history_tool: null          # tool name from the discovery snapshot
+arguments: {}               # {schema_arg_name: template}, templates: "{symbol}", "{date}", "{start}", "{end}"
+response_fields: {}         # {common_schema_field: response_field}
+pacing_seconds: 2.0
+max_attempts: 3
+timeout_seconds: 20
