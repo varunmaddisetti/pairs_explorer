@@ -23,3 +23,7 @@ make doctor; make refresh
 2. Add a verified NSE holiday calendar file and use it in `validation.expected_calendar` for real data.
 3. Optional (after gates): structural-break test (named, documented), optional explanation adapter, dark theme.
 4. Verify `docker compose up --build` on a machine with a Docker daemon.
+
+## Push status
+`git push -u origin claude/pairs-divergence-explorer-build-ytkdso` was refused on 2026-10-01 (HTTP 403: the Claude GitHub App has no access to
+`varunmaddisetti/pairs_explorer`). All commits exist only in the local clone of this session. After access is fixed, push the branch as-is.
