@@ -1,0 +1,8 @@
+services:
+  explorer:
+    build: .
+    image: pairs-divergence-explorer:local
+    ports:
+      - "127.0.0.1:8000:8000"   # local/private only
+    environment:
+      PDE_SOURCE: synthetic

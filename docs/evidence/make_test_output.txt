@@ -1,0 +1,31 @@
+uv run --python 3.12 python -m pytest tests
+........................................................................ [ 90%]
+........                                                                 [100%]
+80 passed in 27.79s
+cd frontend && npm run build
+
+> pairs-divergence-explorer-ui@1.0.0 build
+> tsc -b && vite build
+
+vite v8.3.2 building client environment for production...
+transforming...
+✓ 29 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                     0.93 kB │ gzip:     0.54 kB
+dist/assets/index-DKJp2_3U.css     11.33 kB │ gzip:     3.20 kB
+dist/assets/index-UnClpcry.js   4,904.26 kB │ gzip: 1,496.70 kB
+
+✓ built in 4.69s
+uv run --python 3.12 python -c "import sys; sys.path.insert(0,'backend'); import app.api.main; from app.config import load_default_params; load_default_params(); print('imports/config OK')"
+imports/config OK
+cd frontend && npx playwright test
+
+Running 4 tests using 2 workers
+
+  ✓  2 [desktop] › e2e/critical-flow.spec.ts:4:1 › open demo → choose pair → explanation → change as-of → reveal → backtest → export card (20.8s)
+  ✓  1 [mobile] › e2e/critical-flow.spec.ts:4:1 › open demo → choose pair → explanation → change as-of → reveal → backtest → export card (21.9s)
+  ✓  3 [desktop] › e2e/critical-flow.spec.ts:74:1 › no horizontal page overflow and legible labels (9.2s)
+  ✓  4 [mobile] › e2e/critical-flow.spec.ts:74:1 › no horizontal page overflow and legible labels (8.7s)
+
+  4 passed (35.0s)
