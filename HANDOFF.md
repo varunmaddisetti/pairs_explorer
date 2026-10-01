@@ -25,5 +25,5 @@ make doctor; make refresh
 4. Verify `docker compose up --build` on a machine with a Docker daemon.
 
 ## Push status
-`git push -u origin claude/pairs-divergence-explorer-build-ytkdso` was refused on 2026-10-01 (HTTP 403: the Claude GitHub App has no access to
-`varunmaddisetti/pairs_explorer`). All commits exist only in the local clone of this session. After access is fixed, push the branch as-is.
+The first push attempt on 2026-10-01 was refused (HTTP 403) until the Claude GitHub App was installed on the repository. The branch
+`claude/pairs-divergence-explorer-build-ytkdso` was then pushed successfully to https://github.com/varunmaddisetti/pairs_explorer.
